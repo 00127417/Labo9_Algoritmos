@@ -65,7 +65,7 @@ node* LCA(node * root, int n1,int n2)
     return LCA(root->right, n1, n2); 
 } 
 
-int findLevel(Node *root, int k, int level) 
+int findLevel(node *root, int k, int level) 
 { 
     if(root == NULL) return -1; 
     if(root->key == k) return level; 
@@ -76,10 +76,10 @@ int findLevel(Node *root, int k, int level)
     return left; 
 } 
   
-int findDistance(Node* root, int a, int b) 
+int findDistance(node* root, int a, int b) 
 { 
-    // Your code here 
-    Node* lca = LCA(root, a , b); 
+    
+    node* lca = LCA(root, a , b); 
   
     int d1 = findLevel(lca, a, 0); 
     int d2 = findLevel(lca, b, 0); 
@@ -90,17 +90,18 @@ int findDistance(Node* root, int a, int b)
 int main(){
     
     struct node *root = NULL;
-    root = insert(root, 50);
-    insert(root, 30);
-    insert(root, 20);
-    insert(root, 40);
-    insert(root, 70);
-    insert(root, 60);
-    insert(root, 80);
+    root = insert(root, 8);
+    insert(root, 3);
+    insert(root, 10);
+    insert(root, 1);
+    insert(root, 6);
+    insert(root, 13);
+    
     
     // print inoder traversal of the BST
     //inorder(root);
     preorder(root);
-    cout << "LCA(30, 70) = " << LCA(root, 30, 70)->key;
+    cout << "LCA(1, 13) = " << LCA(root, 1, 13)->key<<endl;
+    cout << "findDistance(1, 13) = " << findDistance(root, 1, 13);
     return 0;
 }
